@@ -1,0 +1,103 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "description" : "This is a simple API",
+    "version" : "1.0.0-oas3",
+    "title" : "Simple Park API",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths" : {
+    "/parks" : {
+      "get/{code}" : {
+        "summary" : "searches one park",
+        "operationId" : "searchPark",
+        "description" : "By passing in the appropriate options, you can search for\navailable park in the system\n",
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "get" : {
+        "summary" : "searches all the park",
+        "operationId" : "read all the parks",
+        "description" : "By passing in the appropriate options, you can search for\navailable park in the system\n",
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "adds a park item",
+        "operationId" : "addPark",
+        "description" : "Adds a park",
+        "requestBody" : {
+          "content" : {
+            "application/json" : null
+          },
+          "description" : "Park item to add"
+        },
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      },
+      "put/{code}" : {
+        "summary" : "adds a park item",
+        "operationId" : "replacePark",
+        "description" : "Adds a park",
+        "requestBody" : {
+          "content" : {
+            "application/json" : null
+          },
+          "description" : "Park item to add"
+        },
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    }
+  },
+  "servers" : [ {
+    "url" : "https://localhost:8080/"
+  } ]
+}
